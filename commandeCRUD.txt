@@ -1,0 +1,132 @@
+INSERTONE
+db.users.insertOne(
+    {
+    "name": "Bastien1",
+    "age": 39,
+    "email": "bastien1@domaine.com",
+    "createdAt": "2021-01-01T00:00:00Z"
+    }
+)
+response : rs0 [direct: primary] test> db.users.insertOne({"name":"Bastien1","age":39,"email":"bastien1@domaine.com","createdAt":"2021-01-01T00:00:00Z"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('661fde6365f27966a1c934dd')
+}
+__________________________________________________________________________
+INSERTMANY
+db.users.insertMany(
+    {
+    "name": "Bastien1",
+    "age": 39,
+    "email": "bastien1@domaine.com",
+    "createdAt": "2021-01-01T00:00:00Z"
+    },
+    {
+    "name": "Bastien2",
+    "age": 34,
+    "email": "bastien2@domaine.com",
+    "createdAt": "2022-01-01T00:00:00Z"
+    },
+    {
+    "name": "Bastien3",
+    "age": 35,
+    "email": "bastien3@domaine.com",
+    "createdAt": "2020-01-01T00:00:00Z"
+    }
+)
+__________________________________________________________________________
+UPDATEONE
+db.users.updateOne(
+    { "nom" : "Sebasto-Paule" },
+    { $set:  { "email": "sebastopaule@gmail.com"}  }
+)
+__________________________________________________________________________
+UPDATEMANY
+db.users.updateMany(
+    {},
+    { $inc: {"age": 5} }
+)
+
+reponse : rs0 [direct: primary] test> db.users.updateMany({},{$inc:{"age": 5} })
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 143,
+  modifiedCount: 143,
+  upsertedCount: 0
+}
+__________________________________________________________________________
+READONE
+db.users.findOne(
+    { "nom": "Sebastien" }
+)
+__________________________________________________________________________
+READMANY
+db.users.find(
+    { "age": { $gt: 30 } }
+)
+reponse : rs0 [direct: primary] test> db.users.find({"age": {$gt:30}})
+[
+  {
+    _id: ObjectId('661fcb29a71ae31d2ff7e75a'),
+    name: 'Bastien',
+    email: 'bastien@domaine.com',
+    age: 41,
+    createdAt: '2023-01-01T00:00:00Z'
+  },
+  {
+    _id: ObjectId('661fcb29a71ae31d2ff7e75b'),
+    name: 'Mariah97',
+    email: 'Mellie89@hotmail.com',
+    age: 104,
+    createdAt: ISODate('2023-04-20T06:56:39.420Z')
+  },
+  {
+    _id: ObjectId('661fcb29a71ae31d2ff7e75c'),
+    name: 'August_Kris',
+    email: 'Norma_Hamill-Baumbach@hotmail.com',
+    age: 71,
+    createdAt: ISODate('2024-01-06T08:41:12.343Z')
+  },
+  {
+    _id: ObjectId('661fcb29a71ae31d2ff7e75d'),
+    name: 'Krystina.Muller14',
+    email: 'Millie24@gmail.com',
+    age: 53,
+    createdAt: ISODate('2023-10-02T08:31:28.206Z')
+  },
+  {
+    _id: ObjectId('661fce1299cc361bb49a63d5'),
+    name: 'Quinten.Robel-Grady',
+    email: 'Margot_Wunsch@hotmail.com',
+    age: 69,
+    createdAt: ISODate('2023-04-27T22:42:55.518Z')
+  },
+  {
+    _id: ObjectId('661fce1299cc361bb49a63d7'),
+    name: 'Malcolm.Reichert97',
+    email: 'Ashlynn_Roob@yahoo.com',
+    age: 39,
+    createdAt: ISODate('2024-01-07T19:52:39.381Z')
+  },
+  {
+    _id: ObjectId('661fce1299cc361bb49a63d8'),
+    name: 'Nichole38',
+    email: 'Elaina33@yahoo.com',
+    age: 69,
+    createdAt: ISODate('2023-07-09T18:47:15.421Z')
+  }
+]
+Type "it" for more
+__________________________________________________________________________
+DELETEONE
+db.users.deleteOne(
+    { "name" : "Bastien1" }
+)
+response: rs0 [direct: primary] test> db.users.deleteOne({"name": "Bastien1"})
+{ acknowledged: true, deletedCount: 1 }
+__________________________________________________________________________
+DELETEMANY
+db.users.deleteMany(
+    { "age": {$lt: 99} }
+)
